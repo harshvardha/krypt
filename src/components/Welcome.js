@@ -48,7 +48,15 @@ const Welcome = () => {
                         <h4>Ethereum</h4>
                     </div>
                 </div>
-                <div className="welcome--form"></div>
+                <div className="welcome--form blue-glassmorphism">
+                    <input className="blue-glassmorphism" name="address-to" type="text" placeholder="Address To" />
+                    <input className="blue-glassmorphism" type="text" name="amount" placeholder="Amount (ETH)" />
+                    <input className="blue-glassmorphism" type="text" name="keyword" placeholder="Keyword (Gif)" />
+                    <input className="blue-glassmorphism" type="text" name="message" placeholder="Enter Message" />
+                    {/* <div className="welcome--form--divider" /> */}
+                    <hr className="welcome--form--divider" />
+                    <button className="blue-glassmorphism" type="button">send now</button>
+                </div>
             </div>
         </div>
     )
