@@ -53,7 +53,6 @@ const Welcome = () => {
                     <input className="blue-glassmorphism" type="text" name="amount" placeholder="Amount (ETH)" />
                     <input className="blue-glassmorphism" type="text" name="keyword" placeholder="Keyword (Gif)" />
                     <input className="blue-glassmorphism" type="text" name="message" placeholder="Enter Message" />
-                    {/* <div className="welcome--form--divider" /> */}
                     <hr className="welcome--form--divider" />
                     <button className="blue-glassmorphism" type="button">send now</button>
                 </div>
