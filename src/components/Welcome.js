@@ -1,8 +1,34 @@
+import { useContext } from "react"
+import { TransactionContext } from "../context/TransactionContext"
+import Loader from "./Loader"
+import { shortenAddress } from "../utils/shortenAddress"
 import { AiFillPlayCircle } from "react-icons/ai"
 import { SiEthereum } from "react-icons/si"
 import { BiInfoCircle } from "react-icons/bi"
 
+const Input = ({ placeholder, name, type, value, handleChange }) => {
+    return (
+        <input
+            placeholder={placeholder}
+            type={type}
+            step="0.0001"
+            value={value}
+            onChange={(event) => handleChange(event, name)}
+            className="blue-glassmorphism"
+        />
+    )
+}
+
 const Welcome = () => {
+    const { currentAccount, connectWallet, handleChange, sendTransaction, formData, isLoading } = useContext(TransactionContext)
+
+    const handleSubmit = (event) => {
+        const { addressTo, amount, keyword, message } = formData
+        event.preventDefault()
+        if (!addressTo || !amount || !keyword || !message) return
+        sendTransaction()
+    }
+
     return (
         <div className="welcome">
             <div className="welcome--connect--wallet">
@@ -10,9 +36,11 @@ const Welcome = () => {
                 <p className="welcome--about">
                     Explore the crypto world. Buy and Sell <br /> cryptocurrencies easily on krypt.
                 </p>
-                <button className="welcome--connect--wallet--button">
-                    <AiFillPlayCircle style={{ color: "white", verticalAlign: "text-bottom" }} /> connect wallet
-                </button>
+                {!currentAccount && (
+                    <button className="welcome--connect--wallet--button" type="button" onClick={connectWallet}>
+                        <AiFillPlayCircle style={{ color: "white", verticalAlign: "text-bottom" }} /> connect wallet
+                    </button>
+                )}
                 <div className="grid-container">
                     <div className="welcome--blockchain--features" style={{ borderTopLeftRadius: "20px" }}>
                         Reliability
@@ -44,17 +72,25 @@ const Welcome = () => {
                         <BiInfoCircle style={{ marginRight: "20px" }} />
                     </div>
                     <div className="welcome--ethereum--card--address">
-                        <p>address</p>
+                        <p>{shortenAddress(currentAccount)}</p>
                         <h4>Ethereum</h4>
                     </div>
                 </div>
                 <div className="welcome--form blue-glassmorphism">
-                    <input className="blue-glassmorphism" name="address-to" type="text" placeholder="Address To" />
-                    <input className="blue-glassmorphism" type="text" name="amount" placeholder="Amount (ETH)" />
-                    <input className="blue-glassmorphism" type="text" name="keyword" placeholder="Keyword (Gif)" />
-                    <input className="blue-glassmorphism" type="text" name="message" placeholder="Enter Message" />
+                    <Input name="addressTo" type="text" placeholder="Address To" handleChange={handleChange} />
+                    <Input type="text" name="amount" placeholder="Amount (ETH)" handleChange={handleChange} />
+                    <Input type="text" name="keyword" placeholder="Keyword (Gif)" handleChange={handleChange} />
+                    <Input type="text" name="message" placeholder="Enter Message" handleChange={handleChange} />
                     <hr className="welcome--form--divider" />
-                    <button className="blue-glassmorphism" type="button">send now</button>
+                    {isLoading
+                        ? <Loader />
+                        : <button
+                            className="blue-glassmorphism"
+                            type="button"
+                            onClick={handleSubmit}
+                        >
+                            send now
+                        </button>}
                 </div>
             </div>
         </div>

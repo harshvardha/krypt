@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { ethers } from "ethers"
 import { contractABI, contractAddress } from "../utils/constants"
 
@@ -8,7 +8,7 @@ const { ethereum } = window
 const createEthereumContract = () => {
     const provider = new ethers.providers.Web3Provider(ethereum)
     const signer = provider.getSigner()
-    const transactionsContract = new ethers.Contract(contractAddress, contractABI, signer)
+    const transactionsContract = new ethers.Contract(contractAddress, contractABI.abi, signer)
     return transactionsContract
 }
 
@@ -37,7 +37,6 @@ const TransactionsProvider = ({ children }) => {
                     amount: parseInt(transaction.amount._hex) / (10 ** 18)
 
                 }))
-                console.log(structuredTransactions)
                 setTransactions(structuredTransactions)
             }
             else {
@@ -69,7 +68,7 @@ const TransactionsProvider = ({ children }) => {
     const checkIfTransactionsExist = async () => {
         try {
             if (ethereum) {
-                const transactionsContract = createEthereumContact()
+                const transactionsContract = createEthereumContract()
                 const currentTransactionCount = await transactionsContract.getTransactionCount()
                 window.localStorage.setItem("transactionCount", currentTransactionCount)
             }

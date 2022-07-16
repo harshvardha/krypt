@@ -25,7 +25,7 @@ contract Transactions {
 
     TransferStruct[] transactions;
 
-    function addtoBlockchain(
+    function addToBlockchain(
         address payable receiver,
         uint256 amount,
         string memory message,

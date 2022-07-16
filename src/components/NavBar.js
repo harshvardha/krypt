@@ -6,8 +6,8 @@ const NavBar = () => {
             <img src={logo} alt="logo" />
             <nav>
                 <ul className="navbar--navmenu">
-                    {["Market", "Exchange", "Tutorials", "Wallets"].map((item) => (
-                        <li>{item}</li>
+                    {["Market", "Exchange", "Tutorials", "Wallets"].map((item, i) => (
+                        <li key={i}>{item}</li>
                     ))}
                     <li id="navbar--login--menuitem">Login</li>
                 </ul>

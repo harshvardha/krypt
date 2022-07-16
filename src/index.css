@@ -225,3 +225,158 @@ button {
 button:hover {
   background-color: #3d4f7c;
 }
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader--container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader--spinner {
+  width: 100px;
+  height: 100px;
+  border: 10px solid red;
+  border-top: 10px solid blue;
+  border-radius: 50%;
+  animation: spinner 1.5s linear infinite;
+}
+
+.services {
+  display: flex;
+  justify-content: center;
+  column-gap: 50px;
+  padding: 100px;
+}
+
+.services--title {
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 74px;
+}
+
+.services--about {
+  color: white;
+  font-weight: 300;
+  line-height: 25px;
+  margin-top: 20px;
+  margin-bottom: 13px;
+}
+
+.services--get--started {
+  color: blue;
+  font-weight: 500;
+}
+
+.services--description {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.service--card {
+  display: flex;
+  column-gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+
+}
+
+.service--card--icon {
+  border-radius: 50px;
+  width: fit-content;
+  height: fit-content;
+  padding: 20px;
+}
+
+.transaction--card {
+  text-align: center;
+  line-height: 30px;
+  background-color: #181918;
+}
+
+.transaction--card--gif {
+  width: 400px;
+  height: 350px;
+}
+
+.transaction--card--details {
+  text-decoration: none;
+  color: white;
+}
+
+.transactions--container {
+  display: flex;
+  justify-content: center;
+  row-gap: 20px;
+  column-gap: 20px;
+  flex-wrap: wrap;
+  border-radius: 20px;
+}
+
+.transaction--card--timestamp {
+  background-color: black;
+  color: #37c7da;
+}
+
+.footer {
+  padding-top: 100px;
+}
+
+.footer--shortcuts {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+
+.footer--shortcuts--logo img {
+  width: 200px;
+}
+
+.footer--shortcuts--nav {
+  display: flex;
+  column-gap: 50px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.footer--invitation {
+  color: white;
+  font-size: 13px;
+  line-height: 27px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.footer--divider {
+  height: 0px;
+  background-color: gray;
+  border: 0.1px solid gray;
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-top: 10px;
+}
+
+.footer--copyright {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 90px;
+  padding-right: 90px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+  font-size: 13px;
+}
